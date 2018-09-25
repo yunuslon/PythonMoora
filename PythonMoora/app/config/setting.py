@@ -13,9 +13,15 @@ ALLOWED_HOSTS = [
 
 PROJECT_APPS = [
     'orm',
+    'management.matematika',
+    'management.kimia',
+    'management.fisika',
+    'management.biologi',
+    'management.hasiltes_matematika',
+    'management.hasiltes_kimia',
+    'management.hasiltes_fisika',
+    'management.hasiltes_biologi',
     'management.siswa',
-    'management.akademik',
-    'management.hasiltes',
     'management.kelas',
     'management.plomba',
     'management.karakter',
@@ -31,6 +37,7 @@ REQUIRED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

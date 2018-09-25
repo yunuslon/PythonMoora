@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<aside class="main-sidebar">
+    <section class="sidebar" style="height: auto;">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 569px;"><section class="sidebar" style="overflow: hidden; width: auto; height: 569px;">
+      <ul class="sidebar-menu tree" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li>
+            <a href="{% url 'admin:index' %}">
+                <i class="fa fa-user"></i> Admin Site</a>
+        </li>
+        <li>
+            <a href="{% url 'siswa:view' %}">
+                <i class="fa fa-user"></i> Data Siswa</a>
+        </li>
+        <li class="treeview active menu-open">
+            <a href="#">
+              <i class="fa fa-database"></i>
+              <span>Data Kelas</span>
+            </a>
+            <ul class="treeview-menu">    
+              <li><a href="{% url 'kelas:view' %}"><i class="fa fa-circle-o"></i>Kelas</a></li>
+              <li><a href="{% url 'kelas:matrix' %}"><i class="fa fa-circle-o"></i>Hasil Maxtrix Kelas</a></li>
+              <li><a href="{% url 'kelas:pembobotan' %}"><i class="fa fa-circle-o"></i>Hasil Pembobotan Maxtrix Kelas</a></li>
+            </ul>
+          </li>
+    </section>
+  </aside>

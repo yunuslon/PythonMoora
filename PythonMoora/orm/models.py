@@ -27,35 +27,99 @@ class Siswa(models.Model):
         db_table = 'Siswa'
         ordering = ['id']
 
-class Akademik(models.Model):
-    siswa = models.ForeignKey(Siswa, on_delete=models.CASCADE, related_name='akademiks')   
-    nama = models.CharField(max_length=100, blank=True, null=True)
+class Matematika(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='matematikas', blank=True, null=True)   
     nilai = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.siswa.nama
-        
+        return self.nilai,self.siswa.nama
 
     class Meta:
-        db_table = 'Akademik'
+        db_table = 'Matematika'
         ordering = ['id']
 
-class Hasiltes(models.Model):
-    siswa = models.ForeignKey(Siswa, on_delete=models.CASCADE, related_name='hasiltess')   
-    nama = models.CharField(max_length=100, blank=True, null=True)
+class Fisika(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='fisikas', blank=True, null=True)   
     nilai = models.IntegerField(default=0)
 
     def __str__(self):
         return self.siswa.nama
 
     class Meta:
-        db_table = 'Hasiltes'
+        db_table = 'Fisika'
+        ordering = ['id']
+
+class Kimia(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='kimias', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'Kimia'
+        ordering = ['id']
+
+class Biologi(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='biologis', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'Biologi'
+        ordering = ['id']
+
+class HasilTes_Matematika(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='hasiltes_matematikas', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'HasilTes_Matematika'
+        ordering = ['id']
+
+class HasilTes_Fisika(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='hasiltes_fisikas', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'HasilTes_Fisika'
+        ordering = ['id']
+
+class HasilTes_Kimia(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='hasiltes_kimias', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'HasilTes_Kimia'
+        ordering = ['id']
+
+class HasilTes_Biologi(models.Model):
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='hasiltes_biologis', blank=True, null=True)   
+    nilai = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.siswa.nama
+
+    class Meta:
+        db_table = 'HasilTes_Biologi'
         ordering = ['id']
 
 class Kelas(models.Model):
-    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE)   
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='kelass', blank=True, null=True)   
     jenjang = models.CharField(max_length=100, blank=True, null=True)
     nilai = models.IntegerField(default=0)
+
   
     def __str__(self):
         return self.siswa.nama
@@ -66,19 +130,21 @@ class Kelas(models.Model):
 
 
 class Karakter(models.Model):
-    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE)
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='karakters', blank=True, null=True)
     sikap = models.CharField(max_length=100, blank=True, null=True)
     nilai = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.siswa.nama
+        return self.siswa.nama, self.sikap
+    
+
 
     class Meta:
         db_table = 'Karakter'
         ordering = ['id']
 
 class Plomba(models.Model):
-    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE)
+    siswa = models.OneToOneField(Siswa, on_delete=models.CASCADE, related_name='plombas', blank=True, null=True)
     intensitas = models.CharField(max_length=100, blank=True, null=True)
     nilai = models.IntegerField(default=0)
 
